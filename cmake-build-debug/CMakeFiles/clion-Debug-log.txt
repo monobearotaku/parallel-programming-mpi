@@ -1,4 +1,0 @@
-/home/deck/.local/share/JetBrains/Toolbox/apps/clion-nova/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/deck/.local/share/JetBrains/Toolbox/apps/clion-nova/bin/ninja/linux/x64/ninja -G Ninja -S /home/deck/CLionProjects/mpi -B /home/deck/CLionProjects/mpi/cmake-build-debug
--- Configuring done (1.9s)
--- Generating done (0.0s)
--- Build files have been written to: /home/deck/CLionProjects/mpi/cmake-build-debug
