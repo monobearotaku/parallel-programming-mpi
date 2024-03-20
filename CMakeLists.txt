@@ -11,10 +11,5 @@ if (MPI_FOUND)
 endif()
 
 include_directories(${MPI_INCLUDE_PATH})
-add_executable(mpi main.cpp
-        ../matrix/matrix.cpp
-        ../matrix/matrix.h
-        operations/operations.cpp
-        operations/operations.h
-)
+add_executable(mpi main.cpp)
 target_link_libraries(mpi ${MPI_CXX_LIBRARIES})
