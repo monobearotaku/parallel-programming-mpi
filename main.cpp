@@ -160,8 +160,6 @@ void inverse_matrix(double *a, double *x, int cur_col) {
 }
 
 int main(int argc, char **argv) {
-  double t = -MPI_Wtime();
-
   MPI_Init(&argc, &argv);
   MPI_Comm_size(MPI_COMM_WORLD, &commsize);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -180,10 +178,13 @@ int main(int argc, char **argv) {
   double *a = get_input_matrix();
   double *x = get_connected_matrix();
 
+  double t = -MPI_Wtime();
+
   // Perform operations with i-th col
   for (int i = 0; i < n; ++i) {
     inverse_matrix(a, x, i);
   }
+  t += MPI_Wtime();
 
   // Fill receive counts and displacements for all procs
   double *recvbuf = nullptr;
@@ -204,7 +205,6 @@ int main(int argc, char **argv) {
   MPI_Gatherv(a, nrows * n, MPI_DOUBLE, recvbuf, recvcounts, displs, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
   // End measuring time
-  t += MPI_Wtime();
 
   // Here receive buffer on proc 0 contains entire inverse matrix
 
